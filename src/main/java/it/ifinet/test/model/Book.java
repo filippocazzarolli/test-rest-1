@@ -1,6 +1,10 @@
 package it.ifinet.test.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -11,25 +15,35 @@ public class Book {
     private Long id;
 
     @Column(length = 200)
+    @NotNull
+    @Size(min = 1, max = 200)
     private String title;
 
-    @Column(length = 1000)
+    @Column(length = 10000)
+    @Size(min = 1, max = 10000)
     private String description;
 
     @Column(name = "unit_cost")
+    @Min(1)
     private Float unitCost;
 
-    private String isnb;
+    @NotNull
+    @Size(min = 1, max = 50)
+    private String isbn;
 
     @Column(name = "publication_date")
     @Temporal(TemporalType.DATE)
+    @Past
     private Date publicationDate;
 
+    @Column(name = "nb_of_pages")
     private Integer nbOfPages;
 
+    @Column(name = "image_url")
     private String imageUrl;
 
     private Language language;
+
 
     public Long getId() {
         return id;
@@ -63,12 +77,12 @@ public class Book {
         this.unitCost = unitCost;
     }
 
-    public String getIsnb() {
-        return isnb;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setIsnb(String isnb) {
-        this.isnb = isnb;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public Date getPublicationDate() {
@@ -110,7 +124,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", unitCost=" + unitCost +
-                ", isnb='" + isnb + '\'' +
+                ", isbn='" + isbn + '\'' +
                 ", publicationDate=" + publicationDate +
                 ", nbOfPages=" + nbOfPages +
                 ", imageUrl='" + imageUrl + '\'' +
