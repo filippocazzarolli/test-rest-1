@@ -13,6 +13,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="rest-1-back" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap:shrinkwrap-api:1.2.6" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/rest-1-back-1.0.0/META-INF/MANIFEST.MF" />
